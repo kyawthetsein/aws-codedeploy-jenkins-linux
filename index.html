@@ -1,28 +1,36 @@
-#!/usr/bin/env ruby
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sample Deployment</title>
+  <style>
+    body {
+      color: #ffffff;
+      background-color: #0000ff;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+    
+    h1 {
+      font-size: 500%;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+    
+    h2 {
+      font-size: 200%;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div align="center">
+    <h1>Congratulations!</h1>
+    <h2>You have successfully deployed this website using AWS code services.</h2>
+    <p>For next steps, read the AWS CodePipeline Documentation.</p>
+  </div>
+</body>
+</html>
 
-require 'rake/testtask'
-require 'rubygems'
-require 'rake'
-require 'haml'
-
-task default: :compile
-
-task :compile do
-  FileList.new('./src/*.html.haml').each do |filename|
-    if filename =~ /([^\/]+)\.haml$/
-      File.open($1, 'w') do |f|
-        f.write Haml::Engine.new(File.read(filename)).render
-      end
-    end
-  end
-end
-
-task :clean do
-  FileUtils.rm_r(Dir.glob("./*.html"), force: true)
-end
-
-task :test do 
-  Rake::TestTask.new do |t|
-    t.test_files = FileList['test/jenkins_sample_test.rb']
-  end
 end
